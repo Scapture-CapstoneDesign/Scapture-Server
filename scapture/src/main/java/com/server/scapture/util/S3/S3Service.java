@@ -36,16 +36,6 @@ public class S3Service {
         return URLDecoder.decode(amazonS3.getUrl(bucket, s3FileName).toString(), "utf-8");
     }
 
-    /* 2. 파일 삭제 */
-    public void delete (String keyName) {
-        try {
-            // deleteObject(버킷명, 키값)으로 객체 삭제
-            amazonS3.deleteObject(bucket, keyName);
-        } catch (AmazonServiceException e) {
-            log.error(e.toString());
-        }
-    }
-
     /* 3. 파일의 presigned URL 반환 */
     public String getPresignedURL (String keyName) {
         String preSignedURL = "";

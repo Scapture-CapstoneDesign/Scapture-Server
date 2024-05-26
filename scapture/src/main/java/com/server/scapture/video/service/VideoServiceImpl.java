@@ -27,8 +27,9 @@ public class VideoServiceImpl implements VideoService{
             String fileName = UUID.randomUUID() + multipartFile.getOriginalFilename();
             // 파일데이터와 파일명 넘겨서 S3에 저장
             s3Service.upload(multipartFile, fileName);
+            String presignedURL = s3Service.getPresignedURL(fileName);
             // DB에는 전체 url말고 파일명으로 저장할 것임
-            imageUrlList.add(fileName);
+            imageUrlList.add(presignedURL);
         }
         // data
         VideoUploadResponseDto data = VideoUploadResponseDto.builder()
