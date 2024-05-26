@@ -35,11 +35,8 @@ public class VideoServiceImpl implements VideoService{
             imageUrlList.add(presignedURL);
         }
         // data
-        VideoGetResponseDto data = VideoGetResponseDto.builder()
-                .videoUrl(imageUrlList)
-                .build();
         // resonseBody
-        CustomAPIResponse<VideoGetResponseDto> responseBody = CustomAPIResponse.createSuccess(HttpStatus.CREATED.value(), data, "비디오 업로드 성공");
+        CustomAPIResponse<VideoGetResponseDto> responseBody = CustomAPIResponse.createSuccess(HttpStatus.CREATED.value(), null, "비디오 업로드 성공");
         // ResponseEntity
         return ResponseEntity
                 .status(HttpStatus.CREATED)
