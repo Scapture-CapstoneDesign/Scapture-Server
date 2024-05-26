@@ -11,6 +11,8 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @Builder
-public class VideoUploadResponseDto {
+public class VideoCreateRequestDto {
+    private String title;
+    private String place;
     private List<String> videoUrl;
 }

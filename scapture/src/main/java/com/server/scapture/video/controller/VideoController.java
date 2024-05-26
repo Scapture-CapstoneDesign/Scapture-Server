@@ -1,6 +1,7 @@
 package com.server.scapture.video.controller;
 
 import com.server.scapture.util.response.CustomAPIResponse;
+import com.server.scapture.video.dto.VideoCreateRequestDto;
 import com.server.scapture.video.service.VideoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +16,20 @@ import java.util.List;
 @RequiredArgsConstructor
 public class VideoController {
     private final VideoService videoService;
-    @PostMapping
+    // S3 업로드
+    @PostMapping("/s3")
     public ResponseEntity<CustomAPIResponse<?>> upload(@RequestParam("image") List<MultipartFile> multipartFiles) throws IOException {
         return videoService.upload(multipartFiles);
+    }
+
+    @PostMapping
+    public ResponseEntity<CustomAPIResponse<?>> createVideo(@RequestBody VideoCreateRequestDto videoCreateRequestDto) {
+        return videoService.createVideo(videoCreateRequestDto);
+    }
+
+    @GetMapping
+    public ResponseEntity<CustomAPIResponse<?>> getVideo() {
+        return videoService.getVideo();
     }
 
 }
