@@ -6,7 +6,6 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,7 +20,7 @@ import java.util.Date;
 @RequiredArgsConstructor
 @Service
 public class S3Service {
-    private final String bucket = "scapture";
+    private final String bucket = "scapture-video";
 
     private final AmazonS3 amazonS3;
 
